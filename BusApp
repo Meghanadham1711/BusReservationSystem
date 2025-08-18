@@ -1,0 +1,43 @@
+package firstProject;
+import java.util.Scanner;
+import java.util.ArrayList;
+public class BusApp {
+	public static void main(String[] args) {
+		ArrayList<Bus> buses=new ArrayList<Bus>();
+		ArrayList<Booking> bookings=new ArrayList<Booking>();
+		buses.add(new Bus(1,true,2));
+		buses.add(new Bus(7,false,50));
+		buses.add(new Bus(3,true,55));
+		for(Bus b:buses)
+		{
+			b.display();
+		}
+		int userOption=1;
+		Scanner scn=new Scanner(System.in);
+		System.out.println("Enter 1 for Booking and Enter 2 to exit");
+		while(userOption==1)
+		{
+			userOption=scn.nextInt();
+			scn.nextLine();
+			if(userOption==1)
+			{
+//				System.out.println("BOOKing..........");
+				Booking booking=new Booking();
+				if(booking.isAvailable(bookings,buses)) {
+					bookings.add(booking);
+					System.out.println("Your Booking is confirmed");
+				}
+				else {
+					System.out.println("Sorry, Bus is full. Try another bus or date.");
+				}
+				
+			}
+			System.out.println("Do you want to continue....");
+			
+		}
+//		scn.close();
+		
+	}
+	
+
+}
